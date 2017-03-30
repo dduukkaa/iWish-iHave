@@ -1,10 +1,32 @@
-<ion-header>
+<ion-header class="listing-header">
   <ion-navbar>
-    <ion-title>List Mini</ion-title>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      <div class="header-logo">
+         <preload-image [ratio]="{w:700, h:210}" src="./assets/images/header_logo_white.png"></preload-image>
+      </div>
+    </ion-title>
   </ion-navbar>
 </ion-header>
+  <background-image class="image-heading" [src]="list2.banner_image">
+     <ion-row class="heading-row">
+      <ion-col no-padding width-100>
+        <h2 class="main-title">Test</h2>
+      </ion-col>
+    </ion-row>
+  </background-image>
+<ion-content class="list-content">
 
-<ion-content class="list-mini-content">
+  <h4 class="categories-title">Compras planejadas</h4>
+  <ion-scroll scrollX="true" class="horizontal-categories">
+    <ion-row class="categories-row">
+      <ion-col width-20 class="horizontal-item"  *ngFor="let item of list2.items">
+        <preload-image [ratio]="{w:1, h:1}" [src]="item.image" title="item.name"></preload-image>
+      </ion-col>
+    </ion-row>
+  </ion-scroll>
   <div class="list-mini">
     <ion-list>
       <button class="list-item" ion-item *ngFor="let item of list2.items">

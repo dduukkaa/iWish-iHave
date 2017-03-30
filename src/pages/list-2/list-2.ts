@@ -28,6 +28,7 @@ export class List2Page {
       .getData()
       .then(data => {
         this.list2.items = data.items;
+        this.list2.banner_image = data.banner_image;
         this.loading.dismiss();
       });
   }

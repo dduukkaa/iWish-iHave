@@ -5,4 +5,5 @@ export class ListModel {
 }
 export class List2Model {
   items: Array<ListModel>;
+  banner_image: string;
 }

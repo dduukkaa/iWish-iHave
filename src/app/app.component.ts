@@ -5,10 +5,11 @@ import { StatusBar, Splashscreen } from 'ionic-native';
 import { TabsNavigationPage } from '../pages/tabs-navigation/tabs-navigation';
 import { FormsPage } from '../pages/forms/forms';
 import { LayoutsPage } from '../pages/layouts/layouts';
+import { CategoriesPage } from '../pages/categories/categories';
 import { WalkthroughPage } from '../pages/walkthrough/walkthrough';
 import { SettingsPage } from '../pages/settings/settings';
 import { FunctionalitiesPage } from '../pages/functionalities/functionalities';
-
+import { LoginPage } from '../pages/login/login';
 
 @Component({
   selector: 'app-root',
@@ -19,7 +20,7 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
   // make WalkthroughPage the root (or first) page
-  rootPage: any = WalkthroughPage;
+  rootPage: any = LoginPage;
   // rootPage: any = TabsNavigationPage;
 
 
@@ -46,6 +47,7 @@ export class MyApp {
 
     this.pushPages = [
       { title: 'Layouts', icon: 'grid', component: LayoutsPage },
+      { title: 'Produtos', icon: 'grid', component: CategoriesPage },
       { title: 'Settings', icon: 'settings', component: SettingsPage }
     ];
   }

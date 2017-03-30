@@ -1,26 +1,26 @@
 {
-    "banner_image": "./assets/images/listing/600x300banner1.png",
-    "banner_title": "Carona",
+    "banner_image": "./assets/images/wishlistlogo.png",
+    "banner_title": "",
     "populars": [
         {
             "title": "Air Sports",
-            "image": "./assets/images/profile/200x200suarez.png"
+            "image": "./assets/images/products/car.jpg"
         },
         {
             "title": "Water Sports",
-            "image": "./assets/images/profile/200x200nadal.png"
+            "image": "./assets/images/products/smartphone.jpg"
         },
         {
             "title": "Beach Sports",
-            "image": "./assets/images/profile/200x200manny.png"
+            "image": "./assets/images/products/videogame.jpg"
         },
         {
             "title": "Extreme Sports",
-            "image": "./assets/images/profile/200x200serena.png"
+            "image": "./assets/images/products/watch.jpg"
         },
         {
             "title": "Athletic Sports",
-            "image": "./assets/images/profile/200x200jordan.png"
+            "image": "./assets/images/products/perfume.jpg"
         },
         {
             "title": "Combat Sports",

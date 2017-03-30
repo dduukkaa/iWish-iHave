@@ -6,6 +6,8 @@ import { ListingPage } from '../pages/listing/listing';
 import { FeedPage } from '../pages/feed/feed';
 import { FollowersPage } from '../pages/followers/followers';
 import { LayoutsPage } from '../pages/layouts/layouts';
+import { CategoriesPage } from '../pages/categories/categories';
+import {ProductsPage} from '../pages/products/products';
 import { FormsPage } from '../pages/forms/forms';
 import { LoginPage } from '../pages/login/login';
 import { NotificationsPage } from '../pages/notifications/notifications';
@@ -24,7 +26,7 @@ import { FormLayoutPage } from '../pages/form-layout/form-layout';
 import { FiltersPage } from '../pages/filters/filters';
 import { TermsOfServicePage } from '../pages/terms-of-service/terms-of-service';
 import { PrivacyPolicyPage } from '../pages/privacy-policy/privacy-policy';
-
+import { ProductDetailsPage } from '../pages/product-details/product-details';
 import { PreloadImage } from '../components/preload-image/preload-image';
 import { BackgroundImage } from '../components/background-image/background-image';
 import { ShowHideContainer } from '../components/show-hide-password/show-hide-container';
@@ -42,7 +44,7 @@ import { List1Service } from '../pages/list-1/list-1.service';
 import { List2Service } from '../pages/list-2/list-2.service';
 import { ScheduleService } from '../pages/schedule/schedule.service';
 import { RidesService } from '../pages/rides/rides.service';
-
+import {ProductDetailsService} from '../pages/product-details/product-details.service';
 // Functionalities
 import { FunctionalitiesPage } from '../pages/functionalities/functionalities';
 import { MapsPage } from '../pages/maps/maps';
@@ -53,6 +55,8 @@ import { ContactCardPage } from '../pages/contact-card/contact-card';
 import { FacebookLoginService } from '../pages/facebook-login/facebook-login.service';
 import { GoogleLoginService } from '../pages/google-login/google-login.service';
 import { GoogleMapsService } from '../pages/maps/maps.service';
+import { ProductsService } from '../pages/products/products.service';
+import { CategoriesService } from '../pages/categories/categories.service';
 import { AngularFireModule } from 'angularfire2';
 
 // AF2 Settings
@@ -71,6 +75,8 @@ export const firebaseConfig = {
     FeedPage,
     FollowersPage,
     LayoutsPage,
+    CategoriesPage,
+    ProductsPage,
     FormsPage,
     LoginPage,
     NotificationsPage,
@@ -94,6 +100,7 @@ export const firebaseConfig = {
     FacebookLoginPage,
     GoogleLoginPage,
     ContactCardPage,
+    ProductDetailsPage,
 
     PreloadImage,
     BackgroundImage,
@@ -115,6 +122,8 @@ export const firebaseConfig = {
     FeedPage,
     FollowersPage,
     LayoutsPage,
+    CategoriesPage,
+    ProductsPage,
     FormsPage,
     LoginPage,
     NotificationsPage,
@@ -137,7 +146,8 @@ export const firebaseConfig = {
     FunctionalitiesPage,
     FacebookLoginPage,
     GoogleLoginPage,
-    ContactCardPage
+    ContactCardPage,
+    ProductDetailsPage
   ],
   providers: [
     FeedService,
@@ -148,10 +158,12 @@ export const firebaseConfig = {
     List2Service,
     ScheduleService,
     RidesService,
-
+    CategoriesService,
+    ProductsService,
     FacebookLoginService,
     GoogleLoginService,
-    GoogleMapsService
+    GoogleMapsService,
+    ProductDetailsService
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
