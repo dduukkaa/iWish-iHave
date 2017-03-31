@@ -13,7 +13,7 @@
       <ion-col no-padding>
         <ion-row class="profile-action-row">
           <ion-col no-padding>
-            <button ion-button block small (click)="goToSettings()">
+            <button ion-button block small >
               Edit profile
             </button>
           </ion-col>
@@ -29,7 +29,7 @@
       </ion-col>
     </ion-row>
   </div>
-  <div [ngSwitch]="display" class="user-content">
+  <!-- <div [ngSwitch]="display" class="user-content">
     <div *ngSwitchCase="'list'" class="list-view">
       <div class="list-item" *ngFor="let post of profile.posts">
         <span class="item-date">{{post.date}}</span>
@@ -63,15 +63,15 @@
         </ion-card>
       </div>
     </div>
-    <div *ngSwitchCase="'grid'" class="grid-view">
+   <div *ngSwitchCase="'grid'" class="grid-view">
       <ion-row wrap class="grid-row">
         <ion-col width-33 class="grid-item" *ngFor="let post of profile.posts">
           <preload-image [ratio]="{w:1, h:1}" [src]="post.image" title="ion2FullApp"></preload-image>
         </ion-col>
       </ion-row>
     </div>
-  </div>
-    <form [formGroup]="settingsForm" class="settings-form">
+  </div>-->
+    <!--<form [formGroup]="settingsForm" class="settings-form">
       <ion-list class="user-data-content">
         <ion-item>
           <ion-label stacked>Name</ion-label>
@@ -86,5 +86,5 @@
           <ion-textarea formControlName="description" rows="5" placeholder="Your description here..."></ion-textarea>
         </ion-item>
       </ion-list>
-    </form>
+    </form>-->
 </ion-content>
