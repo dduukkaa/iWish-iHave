@@ -1,20 +1,20 @@
 product-details-page {
-	.profile-content
+	.details-content
 	{
 		background-color: color($colors, background, base);
 
-		.user-details
+		.product-details
 		{
 			@include element-shadow();
 			padding-bottom: 4%;
 			background-color: $white;
 
-			.user-main-data-row
+			.product-main-data-row
 			{
 				padding: 4% 4% 0px;
 				@include align-items(center);
 
-				.user-image
+				.product-image
 				{
 					border-radius: 50%;
 				}
@@ -24,7 +24,7 @@ product-details-page {
 					padding: 0px 0px 5px 10px;
 				}
 
-				.profile-action-row
+				.details-action-row
 				{
 					padding: 5px 0px 0px 10px;
 
@@ -119,6 +119,51 @@ product-details-page {
 			}
 		}
 
+		.user-data-content
+		{
+			padding: 0px;
+			margin-bottom: 20px;
+
+			ion-item {
+				border: none !important;
+				padding: 0px 20px;
+				@include element-shadow();
+
+				.item-inner
+				{
+					border: none;
+					padding: 0px;
+
+					ion-label {
+						margin: 6px 0px 4px;
+						font-size: 1.1rem;
+						line-height: 1.2;
+						letter-spacing: 0.5px;
+						color: $white-d;
+					}
+
+					ion-input input,
+					ion-textarea textarea {
+						margin: 0px;
+						margin-bottom: 8px;
+						padding: 0px;
+						width: 100%;
+						font-size: 1.6rem;
+						line-height: 1.4;
+						color: $theme-color-3;
+					}
+				}
+
+				.item-title{
+						font-size: 1.6rem;
+					}
+
+				.item-description{
+					font-size: 1.2rem;
+				}
+			}
+		}
+
 		.user-content
 		{
 			.list-view
@@ -144,7 +189,10 @@ product-details-page {
 					}
 				}
 			}
-
+			.details-form
+			{
+				margin-bottom: 80px;
+			}
 			.grid-view
 			{
 				padding: 8px 0px 2px;

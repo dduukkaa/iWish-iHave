@@ -1,0 +1,47 @@
+
+<ion-header class="listing-header">
+  <ion-toolbar>
+    <ion-title>
+      Description
+    </ion-title>
+    <ion-buttons start>
+      <button ion-button (click)="dismiss()">
+        <span ion-text color="white" showWhen="ios">Cancel</span>
+        <ion-icon name="md-close" showWhen="android, windows"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+  <background-image class="image-heading" >
+     <ion-row class="heading-row">
+      <ion-col no-padding width-100>
+        <h2 class="main-title">Test</h2>
+      </ion-col>
+    </ion-row>
+  </background-image>
+<ion-content class="list-content">
+
+  <!--<h4 class="categories-title">My Wish Lists</h4>-->
+  <!--<ion-scroll scrollX="true" class="horizontal-categories">
+    <ion-row class="categories-row">
+      <ion-col width-20 class="horizontal-item"  *ngFor="let item of list2.items">
+        <preload-image [ratio]="{w:1, h:1}" [src]="item.image" title="item.name"></preload-image>
+      </ion-col>
+    </ion-row>
+  </ion-scroll>-->
+  <div class="list-mini">
+    <ion-list>
+      <button class="list-item" ion-item>
+        <ion-row no-padding class="content-row one-line">
+          <ion-col no-padding width-72 class="item-content">
+            <h3 class="item-title">My List 1</h3>
+            <p class="item-description">List of blablabla</p>
+          </ion-col>
+          <ion-col no-padding width-10 class="item-icon">
+            <ion-icon name="arrow-forward"></ion-icon>
+          </ion-col>
+        </ion-row>
+      </button>
+    </ion-list>
+  </div>
+</ion-content>

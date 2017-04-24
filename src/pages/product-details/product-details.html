@@ -4,17 +4,17 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content class="profile-content">
-  <div class="user-details">
-    <ion-row class="user-main-data-row">
+<ion-content class="details-content">
+  <div class="product-details">
+    <ion-row class="product-main-data-row">
       <ion-col no-padding width-33>
-        <preload-image class="user-image" [ratio]="{w:1, h:1}" [src]="product.thumbnail.url" alt="product.productname" title="product.productname"></preload-image>
+        <preload-image class="avatar-image" [ratio]="{w:1, h:1}" [src]="product.thumbnail.url" alt="product.productname" title="product.productname"></preload-image>
       </ion-col>
       <ion-col no-padding>
-        <ion-row class="profile-action-row">
+        <ion-row class="details-action-row">
           <ion-col no-padding>
-            <button ion-button block small >
-              Edit profile
+            <button ion-button block small  (click)="openModal(product)">
+              Add To List
             </button>
           </ion-col>
         </ion-row>
@@ -28,63 +28,11 @@
         <span class="user-location">Cód:{{product.id}}</span>
       </ion-col>
     </ion-row>
-  </div>
-  <!-- <div [ngSwitch]="display" class="user-content">
-    <div *ngSwitchCase="'list'" class="list-view">
-      <div class="list-item" *ngFor="let post of profile.posts">
-        <span class="item-date">{{post.date}}</span>
-        <ion-card>
-          <preload-image [ratio]="{w:1, h:1}" [src]="post.image" title=""></preload-image>
-          <ion-card-content>
-            <p class="item-text">
-              {{post.description}}
-            </p>
-          </ion-card-content>
-          <ion-row no-padding class="actions-row">
-            <ion-col no-padding width-30 text-left>
-              <button class="action-button" ion-button clear small color="danger" icon-left>
-                <ion-icon isActive="{{post.liked}}" name='heart'></ion-icon>
-                  {{post.likes}} Likes
-              </button>
-            </ion-col>
-            <ion-col no-padding width-45 text-center>
-              <button class="action-button" ion-button clear small color="danger" icon-left>
-                <ion-icon name='chatbubbles'></ion-icon>
-                  {{post.comments}} Comments
-              </button>
-            </ion-col>
-            <ion-col no-padding width-25 text-right>
-              <button class="action-button" ion-button clear small color="danger" icon-left (click)="sharePost(post)">
-                <ion-icon name='share-alt'></ion-icon>
-                Share
-              </button>
-            </ion-col>
-          </ion-row>
-        </ion-card>
-      </div>
-    </div>
-   <div *ngSwitchCase="'grid'" class="grid-view">
-      <ion-row wrap class="grid-row">
-        <ion-col width-33 class="grid-item" *ngFor="let post of profile.posts">
-          <preload-image [ratio]="{w:1, h:1}" [src]="post.image" title="ion2FullApp"></preload-image>
-        </ion-col>
-      </ion-row>
-    </div>
-  </div>-->
-    <!--<form [formGroup]="settingsForm" class="settings-form">
-      <ion-list class="user-data-content">
-        <ion-item>
-          <ion-label stacked>Name</ion-label>
-          <ion-input type="text" formControlName="name"></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-label stacked>Location</ion-label>
-          <ion-input type="text" formControlName="location"></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-label stacked>Description</ion-label>
-          <ion-textarea formControlName="description" rows="5" placeholder="Your description here..."></ion-textarea>
-        </ion-item>
-      </ion-list>
-    </form>-->
+  </div>    
+  <ion-list class="user-data-content" >
+      <ion-item *ngFor="let item of product.specification.item">
+        <h2 class="item-title">{{item.item.label}}</h2>
+        <p class="item-description">{{item.item.value}}</p>
+      </ion-item>
+  </ion-list>
 </ion-content>

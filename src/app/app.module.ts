@@ -2,12 +2,14 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { IonicApp, IonicModule } from 'ionic-angular';
 import { MyApp } from './app.component';
 
-import { ListingPage } from '../pages/listing/listing';
+import { ModalContentPage } from '../components/add-to-list-modal/add-to-list';
+import { HomePage } from '../pages/home/home';
 import { FeedPage } from '../pages/feed/feed';
 import { FollowersPage } from '../pages/followers/followers';
 import { LayoutsPage } from '../pages/layouts/layouts';
 import { CategoriesPage } from '../pages/categories/categories';
 import {ProductsPage} from '../pages/products/products';
+import { WishListsPage } from '../pages/wish-lists/wish-lists';
 import { FormsPage } from '../pages/forms/forms';
 import { LoginPage } from '../pages/login/login';
 import { NotificationsPage } from '../pages/notifications/notifications';
@@ -36,8 +38,9 @@ import { CounterInput } from '../components/counter-input/counter-input';
 import { Rating } from '../components/rating/rating';
 import { GoogleMap } from '../components/google-map/google-map';
 
+import { WishListsService } from '../pages/wish-lists/wish-lists.service';
 import { FeedService } from '../pages/feed/feed.service';
-import { ListingService } from '../pages/listing/listing.service';
+import { HomeService } from '../pages/home/home.service';
 import { ProfileService } from '../pages/profile/profile.service';
 import { NotificationsService } from '../pages/notifications/notifications.service';
 import { List1Service } from '../pages/list-1/list-1.service';
@@ -57,26 +60,33 @@ import { GoogleLoginService } from '../pages/google-login/google-login.service';
 import { GoogleMapsService } from '../pages/maps/maps.service';
 import { ProductsService } from '../pages/products/products.service';
 import { CategoriesService } from '../pages/categories/categories.service';
-import { AngularFireModule } from 'angularfire2';
+import { AngularFireModule, AuthMethods, AuthProviders } from 'angularfire2';
 
 // AF2 Settings
 export const firebaseConfig = {
-  apiKey: "AIzaSyBsm-oODm66L27FDW1wjCliUSKVVUORxGw",
-  authDomain: "carona-785e5.firebaseapp.com",
-  databaseURL: "https://carona-785e5.firebaseio.com",
-  storageBucket: "carona-785e5.appspot.com",
-  messagingSenderId: "49454864555"
+  apiKey: "AIzaSyCnaAfrR1CXAU_M8BIqhNumZkE84Bw-UHk",
+    authDomain: "iwish-ihave.firebaseapp.com",
+    databaseURL: "https://iwish-ihave.firebaseio.com",
+    storageBucket: "iwish-ihave.appspot.com",
+    messagingSenderId: "308577453006"
+};
+
+export const firebaseAuthConfig = {
+  provider: AuthProviders.Anonymous,
+  method: AuthMethods.Anonymous
 };
 
 @NgModule({
   declarations: [
     MyApp,
-    ListingPage,
+    HomePage,
+    ModalContentPage,
     FeedPage,
     FollowersPage,
     LayoutsPage,
     CategoriesPage,
     ProductsPage,
+    WishListsPage,
     FormsPage,
     LoginPage,
     NotificationsPage,
@@ -113,17 +123,19 @@ export const firebaseConfig = {
   ],
   imports: [
     IonicModule.forRoot(MyApp),
-    AngularFireModule.initializeApp(firebaseConfig)
+    AngularFireModule.initializeApp(firebaseConfig, firebaseAuthConfig)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    ListingPage,
+    HomePage,
+    ModalContentPage,
     FeedPage,
     FollowersPage,
     LayoutsPage,
     CategoriesPage,
     ProductsPage,
+    WishListsPage,
     FormsPage,
     LoginPage,
     NotificationsPage,
@@ -151,7 +163,7 @@ export const firebaseConfig = {
   ],
   providers: [
     FeedService,
-    ListingService,
+    HomeService,
     ProfileService,
     NotificationsService,
     List1Service,
@@ -163,7 +175,8 @@ export const firebaseConfig = {
     FacebookLoginService,
     GoogleLoginService,
     GoogleMapsService,
-    ProductDetailsService
+    ProductDetailsService,
+    WishListsService
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
