@@ -1,20 +1,30 @@
 import { Injectable } from "@angular/core";
 import { Http } from '@angular/http';
 import {AngularFire, AuthProviders, AuthMethods, FirebaseListObservable} from 'angularfire2';
-
+import {Observable, Subject} from "rxjs/Rx";
 import 'rxjs/add/operator/toPromise';
 
 import { WishListModel } from './wish-lists.model';
 
 @Injectable()
 export class WishListsService {
-  public wishLists: FirebaseListObservable<WishListModel[]>;
+public wishLists: FirebaseListObservable<any>;
+
   constructor(public af: AngularFire) {
     
   }
 
-  getWishLists(): FirebaseListObservable<WishListModel[]> {
-    return this.af.database.list('wishLists');
+  addWishLists(wishlist) {
+    this.wishLists.push(wishlist);
+  }
+  
+  getWishLists(): Promise<WishListModel[]> {
+    this.wishLists = this.af.database.list('wishLists');
+
+    return this.wishLists
+      .first()
+      .toPromise()
+      .then(response => response);
   }
 
   private handleError(error: any): Promise<any> {

@@ -6,14 +6,20 @@
 
 <ion-content class="wish-lists-content">
   <ion-item-group>
-    <ion-item-divider class="wish-lists-divider">Minhas Listas</ion-item-divider>
+    <button class="wish-lists-item" ion-item *ngIf="wishLists.length == 0"  (click)="showCreateNew()">
+        <ion-row no-padding class="content-row one-line">
+          <ion-col no-padding width-72 class="wish-lists-content">
+            <h3 class="item-title">Você não criou nenhuma lista de desejos</h3>
+            <p class="item-description">Clique aqui e crie agora sua lista de desejos</p>
+          </ion-col>
+        </ion-row>
+      </button>
       <button class="wish-lists-item" ion-item *ngFor="let list of wishLists"  (click)="goToListItems(list)">
         <ion-row no-padding class="content-row one-line">
-          <ion-col no-padding width-18 class="item-avatar">
-            <preload-image class="avatar-image" [ratio]="{w:1, h:1}"></preload-image>
-          </ion-col>
           <ion-col no-padding width-72 class="wish-lists-content">
-            <p class="item-description" rows="3">{{list.name}}</p>
+            <h3 class="item-title">{{list.name}}</h3>
+            <p class="item-description">{{list.items.length}} items</p>
+
           </ion-col>
         </ion-row>
       </button>

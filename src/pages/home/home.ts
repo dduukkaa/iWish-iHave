@@ -49,7 +49,8 @@ export class HomePage {
           }
         },
         {
-          text: 'Salvar',
+          text: 'Criar',
+
           handler: data => {
 
             let wishList = new WishListModel();
