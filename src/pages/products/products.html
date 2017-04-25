@@ -7,7 +7,7 @@
 <ion-content class="notifications-content">
   <ion-item-group>
     <ion-item-divider class="notifications-divider">{{categoryName}}</ion-item-divider>
-      <button class="notification-item" ion-item *ngFor="let item of products">
+      <button class="notification-item" ion-item *ngFor="let item of products"  (click)="goToProductDetails(item)">
         <ion-row no-padding class="content-row one-line">
           <ion-col no-padding width-18 class="item-avatar">
             <preload-image class="avatar-image" [ratio]="{w:1, h:1}" [src]="item.product.thumbnail.url"></preload-image>

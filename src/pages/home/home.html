@@ -1,0 +1,51 @@
+<ion-header class="home-header">
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      iWish iHave
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="home-content">
+  <!--<background-image class="image-heading" [src]="listing.banner_image">
+    <ion-row class="heading-row">
+      <ion-col no-padding width-100>
+        <h2 class="main-title">{{listing.banner_title}}</h2>
+      </ion-col>
+    </ion-row>
+  </background-image>-->
+  <ion-row *ngIf="home.recentItems">
+    <h4 class="categories-title">Itens recentes</h4>
+    <ion-scroll scrollX="true" class="horizontal-categories">
+      <ion-row class="categories-row">
+        <ion-col width-20 class="horizontal-item"  *ngFor="let recent of home.recentItems">
+          <preload-image [ratio]="{w:1, h:1}" [src]="recent.thumbnail.url" title="recent.productname"></preload-image>
+        </ion-col>
+      </ion-row>
+    </ion-scroll>
+  </ion-row>
+  <h4 class="categories-title">Lista de Desejos</h4>
+  <ion-row class="grid-categories">
+    <ion-col width-100 class="category-item">
+      <background-image tappable class="category-heading" src="assets/images/listing/wishlist.png" (click)="showCreateNew()">
+        <ion-row class="heading-row">
+          <ion-col no-padding width-100>
+            <h2 class="category-title">Criar nova</h2>
+          </ion-col>
+        </ion-row>
+      </background-image>
+    </ion-col>
+    <ion-col width-100 class="category-item">
+      <background-image tappable class="category-heading" src="assets/images/listing/mywishlist.jpg" (click)="goToWishLists()">
+        <ion-row class="heading-row">
+          <ion-col no-padding width-100>
+            <h2 class="category-title">Minhas listas</h2>
+          </ion-col>
+        </ion-row>
+      </background-image>
+    </ion-col>
+  </ion-row>
+</ion-content>

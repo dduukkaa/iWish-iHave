@@ -36,7 +36,7 @@ export class ProductsPage {
       });
   }
 
-  goToFollowersList(product: ProductModel)
+  goToProductDetails(product: ProductModel)
   {
       this.nav.push(ProductDetailsPage, product);
   }
