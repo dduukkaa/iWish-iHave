@@ -3,7 +3,7 @@
     <ion-title>Listas de Desejos</ion-title>
   </ion-navbar>
 </ion-header>
- 
+
 <ion-content class="wish-lists-content">
   <ion-item-group>
     <button class="wish-lists-item" ion-item *ngIf="wishLists.length == 0"  (click)="showCreateNew()">
@@ -19,6 +19,7 @@
           <ion-col no-padding width-72 class="wish-lists-content">
             <h3 class="item-title">{{list.name}}</h3>
             <p class="item-description">{{list.items.length}} items</p>
+
           </ion-col>
         </ion-row>
       </button>

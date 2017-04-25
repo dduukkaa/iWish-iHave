@@ -8,7 +8,7 @@ import { WishListModel } from './wish-lists.model';
 
 @Injectable()
 export class WishListsService {
-  public wishLists: FirebaseListObservable<any>;
+public wishLists: FirebaseListObservable<any>;
 
   constructor(public af: AngularFire) {
     

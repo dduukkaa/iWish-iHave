@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, LoadingController, NavParams } from 'ionic-angular';
+
 import { AlertController } from 'ionic-angular';
 import { ProductModel } from '../products/products.model';
 
@@ -20,7 +21,8 @@ export class WishListsPage {
     public nav: NavController,
     public wishListsService: WishListsService,
     public alertCtrl: AlertController,
-    public params: NavParams
+
+     public params: NavParams
   ) {
     // this.categoryId = params.get("categoryId");
     // this.categoryName = params.get("categoryName");

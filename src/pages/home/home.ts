@@ -50,6 +50,7 @@ export class HomePage {
         },
         {
           text: 'Criar',
+
           handler: data => {
 
             let wishList = new WishListModel();
