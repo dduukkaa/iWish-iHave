@@ -7,6 +7,7 @@ import { HomeService } from './home.service';
 import { ProductModel } from '../products/products.model';
 import { WishListModel } from '../wish-lists/wish-lists.model';
 import { WishListsPage } from '../wish-lists/wish-lists';
+import { CategoriesPage } from '../categories/categories';
 
 @Component({
   selector: 'home-page',
@@ -43,10 +44,7 @@ export class HomePage {
       ],
       buttons: [
         {
-          text: 'Cancelar',
-          handler: data => {
-            console.log('Cancel clicked');
-          }
+          text: 'Cancelar'
         },
         {
           text: 'Criar',
@@ -67,5 +65,9 @@ export class HomePage {
 
   goToWishLists(){
     this.nav.push(WishListsPage);
+  }
+
+  goToCategories(){
+    this.nav.push(CategoriesPage);
   }
 }

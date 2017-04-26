@@ -30,7 +30,7 @@ export class ProductDetailsPage {
 
   openModal(product) {
 
-    let modal = this.modalCtrl.create(ModalContentPage, product);
+    let modal = this.modalCtrl.create(ModalContentPage, {product});
     modal.present();
   }
   // ionViewDidLoad() {

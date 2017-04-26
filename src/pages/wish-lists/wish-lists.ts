@@ -13,7 +13,7 @@ import { WishListsService } from './wish-lists.service';
   templateUrl: 'wish-lists.html'
 })
 export class WishListsPage {
-  wishLists: WishListModel[] = new Array<WishListModel>();
+  wishLists: WishListModel[];
   loading: any;
   resultMessage: string;
 
@@ -21,15 +21,14 @@ export class WishListsPage {
     public nav: NavController,
     public wishListsService: WishListsService,
     public alertCtrl: AlertController,
+    public params: NavParams) {
 
-     public params: NavParams
-  ) {
-    // this.categoryId = params.get("categoryId");
-    // this.categoryName = params.get("categoryName");
-  }
+      this.wishLists = new Array<WishListModel>();
+
+    }
 
   ionViewDidLoad() {
-
+ 
     this.wishListsService.getWishLists()
       .then(result => {
         
@@ -37,7 +36,10 @@ export class WishListsPage {
 
             if(data.items != null)
               data.description = data.items.length + " items...";
+            else
+              data.description = "0 items..."
             this.wishLists.push(data);
+
           });
       });
   }
@@ -54,7 +56,7 @@ showCreateNew() {
       inputs: [
         {
           name: 'name',
-          placeholder: 'Nome'
+          placeholder: 'Nome da lista de desejos'
         },
       ],
       buttons: [
