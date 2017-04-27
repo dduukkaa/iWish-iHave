@@ -16,6 +16,7 @@ export class WishListsPage {
   wishLists: WishListModel[];
   loading: any;
   resultMessage: string;
+  isDataAvailable:boolean = false;
 
   constructor(
     public nav: NavController,
@@ -28,7 +29,8 @@ export class WishListsPage {
     }
 
   ionViewDidLoad() {
- 
+    this.isDataAvailable = false;
+
     this.wishListsService.getWishLists()
       .then(result => {
         
@@ -42,6 +44,8 @@ export class WishListsPage {
             this.wishLists.push(data);
 
           });
+
+          this.isDataAvailable = true;
       });
   }
 
@@ -77,11 +81,12 @@ showCreateNew() {
 
             this.wishListsService.insertUpdateWishList(wishList)
 
-            this.ionViewDidLoad();
+            //this.ionViewDidLoad();
           }
         }
       ]
     });
+    
     prompt.present();
   }
 }

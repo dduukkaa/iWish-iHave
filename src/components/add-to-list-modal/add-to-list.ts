@@ -13,6 +13,7 @@ export class ModalContentPage {
   product: ProductModel = new ProductModel();
   wishLists: WishListModel[];
   loading: any;
+  isDataAvailable:boolean = false;
 
   constructor(
     public wishListsService: WishListsService,
@@ -28,8 +29,9 @@ export class ModalContentPage {
   }
 
    ionViewDidLoad() {
-
-    this.loading.present();
+    
+    this.isDataAvailable = false;
+    //this.loading.present();
 
     if(this.wishLists.length > 0)
       this.wishLists = new Array<WishListModel>();
@@ -42,14 +44,16 @@ export class ModalContentPage {
             if(data.items == null)
               data.items = new Array();
             
-            data.description = data.items.length + " items...";
+            //data.description = data.items.length + " items...";
 
             this.wishLists.push(data);
 
           });
+
+          this.isDataAvailable = true;
       });
 
-      this.loading.dismiss();
+      //this.loading.dismiss();
   }
 
    close() {
