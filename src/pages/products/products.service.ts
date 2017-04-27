@@ -10,7 +10,7 @@ export class ProductsService {
   constructor(public http: Http) {}
 
   getData(CategoryId: number): Promise<ProductModel[]> {
-    return this.http.get("http://sandbox.buscape.com/service/findProductList/buscape/4f714f6c423865466654413d/?categoryId="+CategoryId+"&format=json")
+    return this.http.get("http://sandbox.buscape.com/service/findProductList/buscape/14932579459436cf3950f/?categoryId="+CategoryId+"&format=json")
      .toPromise()
      .then(response => response.json().product as ProductModel[])
      .catch(this.handleError);

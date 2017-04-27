@@ -10,7 +10,7 @@ export class CategoriesService {
   constructor(public http: Http) {}
 
   getData(): Promise<Category[]> {
-    return this.http.get('http://sandbox.buscape.com/service/findCategoryList/buscape/4f714f6c423865466654413d/BR/?CategoryId=0&format=json')
+    return this.http.get('http://sandbox.buscape.com/service/findCategoryList/buscape/14932579459436cf3950f/BR/?CategoryId=0&format=json')
      .toPromise()
      .then(response => {
        
