@@ -1,6 +1,6 @@
 
 import { Component } from '@angular/core';
-import { ModalController, Platform, NavParams, ViewController, AlertController } from 'ionic-angular';
+import { ModalController, Platform, NavParams, ViewController, AlertController, LoadingController } from 'ionic-angular';
 import { ProductModel } from '../../pages/products/products.model';
 import { WishListModel } from '../../pages/wish-lists/wish-lists.model';
 import { WishListsService } from '../../pages/wish-lists/wish-lists.service';
@@ -12,20 +12,25 @@ import { WishListsService } from '../../pages/wish-lists/wish-lists.service';
 export class ModalContentPage {
   product: ProductModel = new ProductModel();
   wishLists: WishListModel[];
+  loading: any;
 
   constructor(
     public wishListsService: WishListsService,
     public platform: Platform,
     public params: NavParams,
     public alertCtrl: AlertController,
-    public viewCtrl: ViewController
+    public viewCtrl: ViewController,
+    public loadingCtrl: LoadingController
   ) {
+      this.loading = this.loadingCtrl.create();
       this.product = this.params.get('product');
       this.wishLists = new Array<WishListModel>();
   }
 
    ionViewDidLoad() {
-    
+
+    this.loading.present();
+
     if(this.wishLists.length > 0)
       this.wishLists = new Array<WishListModel>();
 
@@ -34,27 +39,47 @@ export class ModalContentPage {
         
           result.forEach(data => {
 
-            if(data.items != null)
-              data.description = data.items.length + " items...";
-            else
-              data.description = "0 items..."
+            if(data.items == null)
+              data.items = new Array();
+            
+            data.description = data.items.length + " items...";
+
             this.wishLists.push(data);
 
           });
       });
+
+      this.loading.dismiss();
   }
 
-   dismiss() {
+   close() {
+
     this.viewCtrl.dismiss();
+
   }
 
   pickListToAdd(wishList: WishListModel)  {
-    
+    let prod = this.product;
+
     if(wishList.items == null)
       wishList.items = new Array<ProductModel>();
-      
-    wishList.items.push(this.product);
 
+    if(!wishList.items.find(function(item: ProductModel){
+        return item.id == prod.id;
+    }))
+    {
+      wishList.items.push(prod);    
+      
+      this.wishListsService.insertUpdateWishList(wishList);
+      
+      this.presentSuccesAlert(wishList.name, 2000);
+
+      this.ionViewDidLoad();
+    }
+    else
+    {
+      this.showAlert("Aviso","Não é possível adicionar o mesmo item mais de uma vez a lista.");
+    }
   }
 
   showCreateNew() {
@@ -82,7 +107,7 @@ export class ModalContentPage {
             wishList.name = data.name;
             wishList.items = new Array<ProductModel>();
 
-            this.wishListsService.addWishLists(wishList)
+            this.wishListsService.insertUpdateWishList(wishList)
 
             this.ionViewDidLoad();
           }
@@ -90,5 +115,29 @@ export class ModalContentPage {
       ]
     });
     prompt.present();
+  }
+
+  showAlert(title, message) {
+    let alert = this.alertCtrl.create({
+      title: title,
+      subTitle: message,
+      buttons: ['OK']
+    });
+    alert.present();
+  }
+
+  presentSuccesAlert(message, duration)
+  {
+      let succesAlert = this.loadingCtrl.create({
+          spinner: "hide",
+          content: `
+            <div class="loading-custom-spinner-container">
+              <div class="checkmark draw"></div>
+            </div>
+            <div class='checkmark-text'>Adicionado à \"` + message + "\"</div>",
+          duration: duration
+        });
+
+      succesAlert.present();
   }
 }

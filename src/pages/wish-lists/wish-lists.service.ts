@@ -8,17 +8,13 @@ import { WishListModel } from './wish-lists.model';
 
 @Injectable()
 export class WishListsService {
-private wishLists: FirebaseListObservable<WishListModel[]>;
+private wishLists: FirebaseListObservable<any>;
 
   constructor(public af: AngularFire) {
-    
+    this.wishLists = this.af.database.list('wishLists');
   }
-
-  // addWishLists(wishlist) {
-  //   this.wishLists.push(wishlist);
-  // }
   
-  addWishLists(wishList:WishListModel) {
+  insertUpdateWishList(wishList:any) {
     if (wishList.hasOwnProperty('$key')) {
       this.wishLists.update(wishList.$key, wishList);
     } else {
@@ -26,8 +22,7 @@ private wishLists: FirebaseListObservable<WishListModel[]>;
     }
   }
 
-  getWishLists(): Promise<WishListModel[]> {
-    this.wishLists = this.af.database.list('wishLists');
+  getWishLists(): Promise<any[]> {
 
     return this.wishLists
       .first()

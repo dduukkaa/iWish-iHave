@@ -1,5 +1,78 @@
 //Common list styles can be found in "./common.styles/layouts/lists"
+	$brand-success: $theme-color-4;
+	$loader-size: 8em;
+	$check-height: $loader-size/5;
+	$check-width: $check-height/2;
+	$check-left: ($loader-size/2.3);
+	$check-thickness: 2.5px;
+	$check-color: $brand-success;	
+
+	.loading-custom-spinner-container {
+		position: relative;
+		display: inline-block;
+		box-sizing: border-box;
+		width: 100%;
+		margin-bottom: 20px;
+	}
+	.checkmark-text
+	{
+		font-size: 1.2rem;
+		letter-spacing: 0.3px;
+		color: $theme-color-3;
+		text-overflow: initial;
+		overflow: initial;
+		white-space: initial;
+	}
+
+	.checkmark {
+		display: above;
+		
+		&.draw:after {
+			animation-duration: 1.2s;
+			animation-timing-function: ease;
+			animation-name: checkmark;
+			transform: scaleX(-1) rotate(135deg);
+		}
+		
+		&:after {
+			opacity: 1;
+			height: $check-height;
+			width: $check-width;
+			transform-origin: left top;
+			border-right: $check-thickness solid $check-color;
+			border-top: $check-thickness solid $check-color;
+			content: '';
+			left: $check-left;
+			top: $check-height/3;
+			position: absolute;
+		}
+	}
+
+	@keyframes checkmark {
+		0% {
+			height: 0;
+			width: 0;
+			opacity: 1;
+		}
+		20% {
+			height: 0;
+			width: $check-width;
+			opacity: 1;
+		}
+		40% {
+			height: $check-height;
+			width: $check-width;
+			opacity: 1;
+		}
+		100% {
+			height: $check-height;
+			width: $check-width;
+			opacity: 1;
+		}
+	}
+
 add-to-list-modal {
+
 	ion-header {
 		@include header-styles(color($colors, header-alt, base), color($colors, header-alt, contrast));
 	}
@@ -90,4 +163,6 @@ add-to-list-modal {
 			}
 		}
 	}
+
+	
 }

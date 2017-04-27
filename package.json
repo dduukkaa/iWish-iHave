@@ -19,6 +19,7 @@
     "@angular/platform-server": "2.4.6",
     "@ionic/storage": "1.1.7",
     "@types/googlemaps": "^3.26.1",
+    "@types/lodash": "^4.14.63",
     "angularfire2": "^2.0.0-beta.8",
     "bourbon": "^4.2.7",
     "bower": "^1.8.0",
@@ -30,6 +31,7 @@
     "ionic-angular": "2.0.0",
     "ionic-native": "2.4.1",
     "ionicons": "3.0.0",
+    "lodash": "^4.17.4",
     "rxjs": "5.1.0",
     "sw-toolbox": "3.4.0",
     "zone.js": "^0.7.6"

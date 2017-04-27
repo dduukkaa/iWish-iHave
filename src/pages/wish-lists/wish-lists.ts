@@ -34,10 +34,11 @@ export class WishListsPage {
         
           result.forEach(data => {
 
-            if(data.items != null)
-              data.description = data.items.length + " items...";
-            else
-              data.description = "0 items..."
+            if(data.items == null)
+              data.items = new Array();
+            
+            data.description = data.items.length + " items...";
+
             this.wishLists.push(data);
 
           });
@@ -74,7 +75,7 @@ showCreateNew() {
             wishList.name = data.name;
             wishList.items = new Array<ProductModel>();
 
-            this.wishListsService.addWishLists(wishList)
+            this.wishListsService.insertUpdateWishList(wishList)
 
             this.ionViewDidLoad();
           }
