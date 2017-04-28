@@ -14,12 +14,16 @@ private wishLists: FirebaseListObservable<any>;
     this.wishLists = this.af.database.list('wishLists');
   }
   
-  insertUpdateWishList(wishList:any) {
-    if (wishList.hasOwnProperty('$key')) {
-      this.wishLists.update(wishList.$key, wishList);
-    } else {
-      this.wishLists.push(wishList);
-    }
+  updateWishList(wishList:any) {
+    
+    this.wishLists.update(wishList.key, wishList);
+    
+  }
+
+  addWishList(wishList:any) {
+    
+    return this.wishLists.push(wishList).key;
+    
   }
 
   getWishLists(): Promise<any[]> {

@@ -78,10 +78,10 @@ showCreateNew() {
             let wishList = new WishListModel();
             wishList.name = data.name;
             wishList.items = new Array<ProductModel>();
-
-            this.wishListsService.insertUpdateWishList(wishList)
-
-            //this.ionViewDidLoad();
+            
+            this.wishListsService.addWishList(wishList);
+            this.wishLists.push(wishList);
+            
           }
         }
       ]

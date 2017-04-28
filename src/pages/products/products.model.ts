@@ -13,6 +13,7 @@ export class ProductModel {
   fulldescription: boolean;
   id: number;
   categoryid: number;
+  canBeAddedToList: boolean;
 }
 
 export interface Thumbnail {

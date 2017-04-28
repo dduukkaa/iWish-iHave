@@ -14,6 +14,7 @@ export class ModalContentPage {
   wishLists: WishListModel[];
   loading: any;
   isDataAvailable:boolean = false;
+  listKey: string;
 
   constructor(
     public wishListsService: WishListsService,
@@ -44,8 +45,6 @@ export class ModalContentPage {
             if(data.items == null)
               data.items = new Array();
             
-            //data.description = data.items.length + " items...";
-
             this.wishLists.push(data);
 
           });
@@ -74,11 +73,10 @@ export class ModalContentPage {
     {
       wishList.items.push(prod);    
       
-      this.wishListsService.insertUpdateWishList(wishList);
+      this.wishListsService.updateWishList(wishList);
       
       this.presentSuccesAlert(wishList.name, 2000);
 
-      this.ionViewDidLoad();
     }
     else
     {
@@ -111,9 +109,9 @@ export class ModalContentPage {
             wishList.name = data.name;
             wishList.items = new Array<ProductModel>();
 
-            this.wishListsService.insertUpdateWishList(wishList)
+            wishList.key = this.wishListsService.addWishList(wishList);
 
-            this.ionViewDidLoad();
+            this.wishLists.push(wishList);
           }
         }
       ]
