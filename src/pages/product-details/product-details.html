@@ -10,7 +10,7 @@
       <ion-col no-padding width-33>
         <preload-image class="avatar-image" [ratio]="{w:1, h:1}" [src]="product.thumbnail.url" alt="product.productname" title="product.productname"></preload-image>
       </ion-col>
-      <ion-col no-padding *ngIf="canBeAddedToList">
+      <ion-col no-padding *ngIf="product.canBeAddedToList">
         <ion-row class="details-action-row">
           <ion-col no-padding>
             <button ion-button block small  (click)="openModal(product)">

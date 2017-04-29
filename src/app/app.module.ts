@@ -9,6 +9,7 @@ import { FollowersPage } from '../pages/followers/followers';
 import { LayoutsPage } from '../pages/layouts/layouts';
 import { CategoriesPage } from '../pages/categories/categories';
 import {ProductsPage} from '../pages/products/products';
+import {ListProductsPage} from '../pages/list-products/list-products';
 import { WishListsPage } from '../pages/wish-lists/wish-lists';
 import { FormsPage } from '../pages/forms/forms';
 import { LoginPage } from '../pages/login/login';
@@ -86,6 +87,7 @@ export const firebaseAuthConfig = {
     LayoutsPage,
     CategoriesPage,
     ProductsPage,
+    ListProductsPage,
     WishListsPage,
     FormsPage,
     LoginPage,
@@ -135,6 +137,7 @@ export const firebaseAuthConfig = {
     LayoutsPage,
     CategoriesPage,
     ProductsPage,
+    ListProductsPage,
     WishListsPage,
     FormsPage,
     LoginPage,

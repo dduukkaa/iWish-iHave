@@ -1,13 +1,18 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Produtos</ion-title>
+    <ion-title>{{wishList.name}}</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="presentActionSheet()">
+        <ion-icon name="more"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 <ion-content class="notifications-content">
   <ion-item-group>
-    <ion-item-divider class="notifications-divider">{{categoryName}}</ion-item-divider>
-      <button class="notification-item" ion-item *ngFor="let item of products"  (click)="goToProductDetails(item)">
+    <!--<ion-item-divider class="notifications-divider">{{categoryName}}</ion-item-divider>-->
+      <button class="notification-item" ion-item *ngFor="let item of wishList.items"  (click)="goToProductDetails(item)">
         <ion-row no-padding class="content-row one-line">
           <ion-col no-padding width-18 class="item-avatar">
             <preload-image class="avatar-image" [ratio]="{w:1, h:1}" [src]="item.thumbnail.url"></preload-image>

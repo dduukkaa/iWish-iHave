@@ -16,7 +16,6 @@ import 'rxjs/Rx';
 export class ProductDetailsPage {
   modalCtrl: ModalController = new ModalController(this.app);
   product: ProductModel;
-  canBeAddedToList: boolean;
   loading: any;
 
   constructor(
@@ -26,7 +25,6 @@ export class ProductDetailsPage {
     public profileService: ProductDetailsService,
     public loadingCtrl: LoadingController) {
       this.product = navParams.get("product");
-      this.canBeAddedToList = navParams.get("canBeAddedToList");
       this.loading = this.loadingCtrl.create();
   }
 

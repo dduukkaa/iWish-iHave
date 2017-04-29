@@ -3,6 +3,7 @@ import { NavController, LoadingController, NavParams } from 'ionic-angular';
 
 import { AlertController } from 'ionic-angular';
 import { ProductModel } from '../products/products.model';
+import { ListProductsPage } from '../list-products/list-products';
 
 import 'rxjs/Rx';
 import { WishListModel } from './wish-lists.model';
@@ -49,9 +50,9 @@ export class WishListsPage {
       });
   }
 
-  goToListItems(product: WishListModel)
+  goToListItems(wishList: WishListModel)
   {
-      //this.nav.push(ProductDetailsPage, product);
+      this.nav.push(ListProductsPage, { wishList: wishList});
   }
 
 showCreateNew() {

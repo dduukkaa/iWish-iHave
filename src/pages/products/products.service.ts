@@ -9,7 +9,7 @@ import { ProductModel } from './products.model';
 export class ProductsService {
   constructor(public http: Http) {}
 
-  getData(CategoryId: number): Promise<ProductModel[]> {
+  getData(CategoryId: number): Promise<any[]> {
     return this.http.get("http://sandbox.buscape.com/service/findProductList/buscape/14932579459436cf3950f/?categoryId="+CategoryId+"&format=json")
      .toPromise()
      .then(response => response.json().product as ProductModel[])

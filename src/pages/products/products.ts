@@ -16,42 +16,30 @@ export class ProductsPage {
   loading: any;
   categoryId: number;
   categoryName: string;
-  showAddToList: boolean;
 
   constructor(
     public nav: NavController,
     public productsService: ProductsService,
     public params: NavParams
   ) {
-    this.categoryId = params.get("categoryId");
-    this.categoryName = params.get("categoryName");
-    
-    if(params.get("products") != null)
-      this.products = params.get("products");
+      this.categoryId = params.get("categoryId");
+      this.categoryName = params.get("categoryName");
   }
 
   ionViewDidLoad() {
-
-    if(this.products.length == 0)
-    {
-      this.productsService.getData(this.categoryId)
-        .then(result => {
-            result.forEach(data => {
-              this.products.push(data);
+    this.productsService.getData(this.categoryId)
+      .then(result => {
+          result.forEach(data => {
+              this.products.push(data.product);
             });
         });
-
-      this.showAddToList = true;
-    }
-    else
-      this.showAddToList = false;
   }
 
   goToProductDetails(product: ProductModel)
   {
-      product.canBeAddedToList = this.showAddToList;
+      product.canBeAddedToList = true;
       
-      this.nav.push(ProductDetailsPage, product);
+      this.nav.push(ProductDetailsPage, { product: product });
   }
 
 }
