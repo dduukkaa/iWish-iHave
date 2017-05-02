@@ -37,6 +37,15 @@ private wishLists: FirebaseListObservable<any>;
       .then(response => response);
   }
 
+  deleteWishList(wishList:any){
+
+    if(wishList.hasOwnProperty("$key"))
+      this.wishLists.remove(wishList.$key);
+    else
+      this.wishLists.remove(wishList.key);
+
+  }
+
   private handleError(error: any): Promise<any> {
     console.error('An error occurred', error); // for demo purposes only
     return Promise.reject(error.message || error);
