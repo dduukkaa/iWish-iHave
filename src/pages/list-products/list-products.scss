@@ -1,20 +1,20 @@
 list-products-page {
-	.notifications-content
+	.list-products-content
 	{
-		.notifications-divider
-		{
-			font-size: 1.3rem;
-			font-weight: 500;
-			letter-spacing: 1.0px;
-			color: $theme-color-4;
+		// .list-products-divider
+		// {
+		// 	font-size: 1.3rem;
+		// 	font-weight: 500;
+		// 	letter-spacing: 1.0px;
+		// 	color: $theme-color-4;
 
-			&:not(:first-child)
-			{
-				padding-top: 30px;
-			}
-		}
+		// 	&:not(:first-child)
+		// 	{
+		// 		padding-top: 30px;
+		// 	}
+		// }
 
-		.notification-item
+		.list-products-item
 		{
 			padding: 12px;
 			border: none;
@@ -66,6 +66,29 @@ list-products-page {
 				margin: 0px;
 				padding-left: 8px;
 				@include align-self(flex-start);
+			}
+
+
+		}
+
+		.list-products-item-edit
+		{
+			.item-description-edit
+			{
+				font-size: 1.1rem;
+				letter-spacing: 0.2px;
+				color: $theme-color-2;
+				text-overflow: initial;
+				overflow: initial;
+				white-space: initial;
+			}
+
+			.item-button ion-icon {
+				font-size: 2.2rem;
+			}
+
+			.item-button {
+				max-height: 2.4rem;
 			}
 		}
 	}

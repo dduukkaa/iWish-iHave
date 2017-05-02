@@ -2,25 +2,66 @@
   <ion-navbar>
     <ion-title>{{wishList.name}}</ion-title>
     <ion-buttons end>
-      <button ion-button icon-only (click)="presentActionSheet()">
+      <button ion-button icon-only (click)="presentActionSheet()" *ngIf="!isEditing">
         <ion-icon name="more"></ion-icon>
+      </button>
+      <button ion-button text-only (click)="saveChanges()" *ngIf="isEditing">
+        Salvar
       </button>
     </ion-buttons>
   </ion-navbar>
 </ion-header>
 
-<ion-content class="notifications-content">
-  <ion-item-group>
-    <!--<ion-item-divider class="notifications-divider">{{categoryName}}</ion-item-divider>-->
-      <button class="notification-item" ion-item *ngFor="let item of wishList.items"  (click)="goToProductDetails(item)">
+<ion-content class="list-products-content">
+  <ion-item-group *ngIf="!isEditing">
+      <button class="list-products-item" ion-item *ngFor="let item of wishList.items"  (click)="goToProductDetails(item)">
         <ion-row no-padding class="content-row one-line">
           <ion-col no-padding width-18 class="item-avatar">
             <preload-image class="avatar-image" [ratio]="{w:1, h:1}" [src]="item.thumbnail.url"></preload-image>
           </ion-col>
-          <ion-col no-padding width-72 class="notification-content">
-            <p class="item-description" rows="3">{{item.productname}}</p>
+          <ion-col no-padding width-72 center>
+            <p class="item-description" rows="2">{{item.productname}}</p>
           </ion-col>
         </ion-row>
       </button>
   </ion-item-group>
+  <ion-list *ngIf="isEditing">
+    <ion-item-sliding class="list-products-item-edit" *ngFor="let product of wishList.items" #slidingItem>
+      <!--<ion-item #item>
+        <ion-row no-padding>
+          <button icon-left ion-button color="danger" clear (click)="open(slidingItem, item, $event)">
+            <ion-icon name='remove-circle' is-active="false"></ion-icon>
+          </button>
+          <ion-col no-padding width-15 class="item-avatar">
+            <preload-image class="avatar-image" [ratio]="{w:1, h:1}" [src]="product.thumbnail.url"></preload-image>
+          </ion-col>
+          <ion-col no-padding width-70 >
+            <p class="item-description">{{product.productname}}</p>
+          </ion-col>
+        </ion-row>
+      </ion-item>-->
+      <ion-item  #item>
+        <ion-row no-padding>
+          <ion-col no-padding center>
+            <button icon-left ion-button class="list-products-item-edit item-button" color="danger" clear (click)="open(slidingItem, item, $event)">
+              <ion-icon  name='remove-circle' is-active="false"></ion-icon>
+            </button>
+          </ion-col>
+          <ion-col no-padding  width-18>
+            <ion-thumbnail item-left>
+              <img [src]="product.thumbnail.url">
+            </ion-thumbnail>
+          </ion-col>
+          <ion-col no-padding width-72 center>
+            <p class="item-description-edit">{{product.productname}}</p>
+          </ion-col>
+        </ion-row>
+      </ion-item>
+      <ion-item-options side="right" (click)="close(slidingItem)">
+        <button ion-button color="danger" (click)="doRemove(product)">
+          Remover
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
 </ion-content>

@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { NavController, LoadingController, NavParams, ActionSheetController } from 'ionic-angular';
 import { ProductDetailsPage } from '../product-details/product-details';
 import { WishListModel} from '../wish-lists/wish-lists.model';
+import { ItemSliding, Item } from 'ionic-angular';
+
 import 'rxjs/Rx';
 import { Category } from '../categories/categories.model';
 import { ProductModel } from '../products/products.model';
@@ -13,6 +15,9 @@ import { ProductsService } from '../products/products.service';
 })
 export class ListProductsPage {
   wishList: WishListModel;
+  deletedItems: ProductModel[];
+  isEditing: boolean;
+  selectedItemSlide: ItemSliding;
   loading: any;
 
   constructor(
@@ -22,6 +27,7 @@ export class ListProductsPage {
     public params: NavParams
   ) {
       this.wishList = params.get("wishList");
+      this.isEditing = false;
   }
 
   goToProductDetails(product: ProductModel)
@@ -29,6 +35,38 @@ export class ListProductsPage {
       product.canBeAddedToList = false;
       
       this.nav.push(ProductDetailsPage, { product: product });
+  }
+
+  doRemove(product: ProductModel){
+
+     let updatedItemList = this.wishList.items.filter(item => item.id != product.id);
+
+     this.wishList.items = updatedItemList;
+
+  }
+
+  saveChanges(){
+
+     
+
+  }
+
+  open(itemSlide: ItemSliding, item: Item, $event) {
+
+          itemSlide.setElementClass("active-sliding", true);
+          itemSlide.setElementClass("active-slide", true);
+          itemSlide.setElementClass("active-options-right", true);
+          item.setElementStyle("transform", "translate3d(-144px, 0px, 0px)")
+
+  }
+
+  close(itemSlide: ItemSliding) {
+
+      itemSlide.close();
+      itemSlide.setElementClass("active-sliding", false);
+      itemSlide.setElementClass("active-slide", false);
+      itemSlide.setElementClass("active-options-right", false);
+
   }
 
   presentActionSheet() {
@@ -45,7 +83,9 @@ export class ListProductsPage {
        {
          text: 'Editar',
          handler: () => {
-           console.log('Archive clicked');
+           
+           this.isEditing = true;
+
          }
        },
        {
